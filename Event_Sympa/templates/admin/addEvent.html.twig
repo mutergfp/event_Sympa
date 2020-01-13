@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event_Sympa - Ajouter un événement{% endblock %}
+
+{% block body %}
+    <div id="main">
+    <div class="inner">
+        <header>
+            <h1>Ajouter un événement</h1>
+        </header>
+    {{ form_start(form) }}
+    {{ form_row(form.title, { 'label': 'Titre' }) }}
+        <br>
+    {{ form_row(form.description, { 'label': 'Description' }) }}
+        <br>
+    {{ form_row(form.image, { 'label': 'Image' }) }}
+        <br>
+    {{ form_row(form.eventType, { 'label': 'Type' }) }}
+        <br>
+    {{ form_row(form.startDate, { 'label': 'Début de l\'événement' }) }}
+        <br>
+    {{ form_row(form.endDate, { 'label': 'Fin de l\'événement' }) }}
+        <br>
+    {{ form_row(form.price, { 'label': 'Prix' }) }}
+        <br>
+    {{ form_row(form.placeMax, { 'label': 'Place maximum' }) }}
+        <br>
+    {{ form_row(form.placeNamePlace, {'label' : 'Lieux' }) }}
+        <br>
+    <button type="submit">Ajouter</button>
+    {{ form_end(form) }}
+    </div>
+    </div>
+{% endblock %}

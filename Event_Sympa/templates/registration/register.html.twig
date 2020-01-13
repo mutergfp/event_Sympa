@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div id="main">
+    <div class="inner">
+    <h1>Inscription</h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username, { 'label': 'Nom de compte'}) }}
+        <br>
+        {{ form_row(registrationForm.plainPassword, { 'label': 'Mot de passe'}) }}
+        <br>
+        {{ form_row(registrationForm.name, { 'label': 'Prénom'}) }}
+        <br>
+        {{ form_row(registrationForm.firstName, { 'label': 'Nom de famille'}) }}
+        <br>
+        {{ form_row(registrationForm.adress, { 'label': 'Adresse'}) }}
+        <br>
+        {{ form_row(registrationForm.postalCode, { 'label': 'Code postal'}) }}
+        <br>
+        {{ form_row(registrationForm.city, { 'label': 'Ville'}) }}
+        <br>
+
+    <button class="btn">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+    </div>
+</div>
+{% endblock %}

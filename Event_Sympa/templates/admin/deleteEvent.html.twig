@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event_Sympa - Suppression d'événement{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="inner">
+            <header>
+                <h1>Supprimer un événement</h1>
+            </header>
+            <p>Souhaitez-vous vraiment supprimer : <h4>{{ event.title }} - {{ event.eventType }}</h4> le <h4>{{ event.startDate|date("m/d/Y") }}</h4> au <h4>{{ event.endDate|date("m/d/Y")}}</h4></p>
+            {{ form_start(form) }}
+                <button type="submit">Valider</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

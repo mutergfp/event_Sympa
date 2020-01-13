@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event_Sympa - Mes réservations{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="inner">
+            <section>
+                <h1>Mes reservations</h1>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Date de l'événement</th>
+                            <th>Prix unitaire</th>
+                            <th>Nombre de place</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for o in orders %}
+                        <tr>
+                            <td>{{ o.getEvent().title }}</td>
+                            <td>{{ o.getEvent().startDate|date("m/d/Y") }}</td>
+                            <td>{{ o.getEvent().price }}€</td>
+                            <td>{{ o.quantity }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event_Sympa - {% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="inner">
+            <h1>{{ event.title }} - {{ event.eventType }}</h1>
+            <span class="image main"><img src="/assets/images/{{ event.image }}" alt="{{ event.title }}" /></span>
+            <p>Date de début de l'événement : <b>{{ event.startDate|date("m/d/Y")  }}</b></p>
+            <p>Date de fin de l'événement : <b>{{ event.endDate|date("m/d/Y")  }}</b></p>
+            <p>Lieu de l'événement : <b>{{ event.getPlaceNamePlace().getPlaceName() }},{{ event.getPlaceNamePlace().getAdress() }},{{ event.getPlaceNamePlace().getPostalCode() }},{{ event.getPlaceNamePlace().getCity() }}</b></p>
+            <p>Place disponible : <b>{{ event.placeRemain }}/{{ event.placeMax }}</b></p>
+            <p>Prix unitaire : <b>{{ event.price }}€</b></p>
+            <p>{{ event.description }}</p>
+            {% if event.placeRemain > 0 %}
+                <a href="{{ path('order', {'idEvent': event.id}) }}" class="button primary">Reserver</a></li>
+            {% endif %}
+        </div>
+    </div>{% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <!-- Logo -->
+            <a href={{ path('allEvent') }} class="logo">
+                <span class="title">Event-Sympa</span>
+            </a>
+
+            <!-- Nav -->
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href={{ path('allEvent') }}>Accueil</a></li>
+            {% if is_granted('ROLE_USER') == true %}
+                <li><a href={{ path('logout') }}>Se déconnecter</a></li>
+            {% else %}
+                <li><a href={{ path('login') }}>Se connecter</a></li>
+                <li><a href="{{ path('register') }}">S'inscrire</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_USER') == true %}
+                {% if is_granted('ROLE_ADMIN') == true %}
+                    <li><a href={{ path('addEvent') }}>Ajouter un événement</a></li>
+                    <li><a href={{ path('addPlace') }}>Ajouter un lieu</a></li>
+                {% endif %}
+                <li><a href={{ path('myOrders') }}>Mes réservations</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- BODY -->
+    {% block body %}{% endblock %}
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <section>
+                <h2>Follow</h2>
+                <ul class="icons">
+                    <li><a href="https://twitter.com" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://www.facebook.com" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="https://www.instagram.com" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                </ul>
+            </section>
+            <ul class="copyright">
+                <li>&copy; Event_Sympa. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/browser.min.js"></script>
+<script src="/assets/js/breakpoints.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

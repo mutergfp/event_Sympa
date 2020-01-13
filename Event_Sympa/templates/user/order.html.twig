@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event_Sympa - Réservation{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="inner">
+            <header>
+                <h1>Reserver</h1>
+            </header>
+            <p>Titre : <b>{{ event.title }} - {{ event.eventType }}</b><p>
+            <p>Date de début de l'événement : <b>{{ event.startDate|date("m/d/Y")  }}</b></p>
+            <p>Date de fin de l'événement : <b>{{ event.endDate|date("m/d/Y")  }}</b></p>
+            <p>Lieu de l'événement : <b>{{ event.getPlaceNamePlace().getPlaceName() }},{{ event.getPlaceNamePlace().getAdress() }},{{ event.getPlaceNamePlace().getPostalCode() }},{{ event.getPlaceNamePlace().getCity() }}</b></p>
+            <p>Prix unitaire : <b>{{ event.price }}€</b></p>
+            {{ form_start(form) }}
+                {{ form_row(form.quantity, { 'label': 'Quantité' }) }}
+            <br>
+                <button type="submit">Reserver</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event-Sympa{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="inner">
+            <header>
+                <h1>Bienvenue sur Event-Sympa ! Le seul site qui vous permet de trouver tous les événements en France </h1>
+                <p>Un  événement, un concert, un spectacle, tout se que vous vouliez trouver ce trouve dans la liste ci-dessous</p>
+            </header>
+            <section class="tiles">
+                {% for e in events %}
+                <article class="style1">
+									<span class="image">
+										<img src="/assets/images/{{ asset(e.image) }}" alt="{{ e.title }}" />
+									</span>
+                    <a href="{{ path('detailEvent', {'idEvent': e.id}) }}" style="white-space: pre-line;">
+                        <h2>{{ e.title }}<br> {{ e.eventType }}</h2>
+                        <div class="content">
+                            <p>{{ e.description | slice(0, 150)}}...</p>
+                        </div>
+                    </a>
+                </article>
+                {% if is_granted('ROLE_ADMIN') %}
+                <br>
+                <ul class="icons" style="margin:0; padding-left:1em; padding-right :2em">
+                    <li><a href="{{ path('deleteEvent', {'idEvent': e.id}) }}" class="icon style1 fa-minus"></a></li>
+                    <li><a href="{{ path('updateEvent', {'idEvent': e.id}) }}" class="icon style1 fa-pencil"></a></li>
+                </ul>
+                {% endif %}
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+{% endblock %}
+
